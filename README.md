@@ -1,4 +1,4 @@
-# Kafka in Docker
+
 ## Deploy instructions.
 
 Search for any kafka docker:
@@ -37,4 +37,8 @@ docker run --rm --interactive ches/kafka kafka-console-producer.sh --topic test0
 02120152
 ```
 
+## Code requirements
 
+- requires python2.X
+- requires KAFKA_IP specificed
+- requires salesforce creds, in future the code will be changed to get them automatically 
