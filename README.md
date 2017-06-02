@@ -1,5 +1,5 @@
-# kafka
-Deploy instructions.
+# Kafka in Docker
+## Deploy instructions.
 
 Search for any kafka docker:
 ```
@@ -16,16 +16,14 @@ Start the Kafka Docker, name it: kafka, link it to the above Zookeeper container
 docker run -d --name kafka --link zookeeper:zookeeper ches/kafka
 ```
 
-Get the IP addresses of the Zookeeper and the Kafka broker first. Note that, these IP addresses are assigned for Docker container automatically when we started them:
+Get the IP addresses of the Zookeeper and the Kafka broker first. Note that these IP addresses are assigned for Docker container automatically when we started them:
 
 ```
 ZK_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' zookeeper)
 KAFKA_IP=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' kafka)
 ```
 
-We will issue the below command to create a topic “test” with 1 partition and 1 replicated:
-
-Issue below command to produce message to the “test” topic:
+We will issue the below command to create a topic “test” with 1 partition and replication factor 1:
 
 ```
 docker run --rm ches/kafka \
@@ -39,5 +37,4 @@ docker run --rm --interactive ches/kafka kafka-console-producer.sh --topic test0
 02120152
 ```
 
- 
 
