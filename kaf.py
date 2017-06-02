@@ -24,7 +24,7 @@ def consume_mes():
 
 def sf_query(lst):
 	session = requests.Session()
-	sf = Salesforce(username='tatyana.matveeva@veeam.com', password='herrieschopper', security_token='W1CPKq5RhroGPbSMQTuZyM8d',
+	sf = Salesforce(username='', password='', security_token='',
 					sandbox=False, session=session)
 	force_out = []
 	for i in lst:
