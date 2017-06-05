@@ -42,3 +42,11 @@ docker run --rm --interactive ches/kafka kafka-console-producer.sh --topic test0
 - requires python2.X
 - requires KAFKA_IP specificed
 - requires salesforce creds, in future the code will be changed to get them automatically 
+
+## Dependencies 
+
+ ```
+ pip install simple_salesforce
+ pip install pykafka
+ pip install requests
+ ```
