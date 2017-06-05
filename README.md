@@ -50,3 +50,15 @@ docker run --rm --interactive ches/kafka kafka-console-producer.sh --topic test0
  pip install pykafka
  pip install requests
  ```
+
+## How to run the app
+
+- Once you followed the deploy instructions mentioned above, you should have kafka and zookeeper containers vixible if you run 'docker ps' 
+- 'echo ZK_IP' and 'echo KAFKA_IP' should show you the IP's of both containers assigned to them automatically
+- fill in the IP of kafka container in the code in the consume_mes and kafka_prod methods e.g.  client = KafkaClient("10.13.0.4:9092")
+- in sf_query method fill in the credentials and security token for salesforce  - sf = Salesforce(username='', password='', security_token='', sandbox=False, session=session)
+
+Here is how you can get a security token in salesforce :
+ - Login to your orgnistaion and Navigate to At the top navigation bar go to <your name > My Settings > Personal  >  Reset My Security Token.
+ - And click on "Reset Security Token".Clicking the button invalidates your existing token. After resetting your token, It will be mail to the user mai ID
+     
