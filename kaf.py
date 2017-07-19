@@ -8,7 +8,7 @@ import time
 import datetime
 
 
-def consume_mes(incoming_topic_name, kafka_host_ip="localhost:9092"):
+def consume_mes(incoming_topic_name, kafka_host_ip="10.13.0.4:9092"):
 	"""
 	:param incoming_topic_name:
 	:param kafka_host_ip:
@@ -45,12 +45,13 @@ def sf_query(lst, creds):
 	return force_out
 
 
-def kafka_prod(force_out, outgoing_topic_name, kafka_host_ip="localhost:9092"):
+def kafka_prod(force_out, outgoing_topic_name, kafka_host_ip="10.13.0.4:9092"):
 	client = KafkaClient(hosts=kafka_host_ip, use_greenlets=True)
 	topic = client.topics[outgoing_topic_name]
 	res = reduce(lambda x, y: x + y, force_out)
 	with topic.get_sync_producer() as producer:
 		for i in res:
+			print(i)
 			producer.produce(str(i[1]) + ";" + str(i[0]))
 
 
@@ -74,7 +75,7 @@ def main(argv):
 		sys.exit(2)
 
 	safe_args = {k: v for k, v in opts}
-	print("[{0}] kaf.py: Started with arguments {1}".format(datetime.utcnow(), safe_args))
+	print("[{0}] kaf.py: Started with arguments {1}".format(datetime.time(), safe_args))
 	creds = {'username': safe_args.get("--sf_username"), 'password': safe_args.get("--sf_pass"),
 			 'security_token': safe_args.get("--sf_token")}
 
@@ -86,3 +87,6 @@ def main(argv):
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
+
+
+
