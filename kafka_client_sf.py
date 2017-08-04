@@ -13,7 +13,7 @@ def consume_mes(incoming_topic_name):
     :param incoming_topic_name:
     :return:
     """
-    consumer = KafkaConsumer(incoming_topic_name, bootstrap_servers=['192.168.13.197:9092'], auto_offset_reset='earliest',
+    consumer = KafkaConsumer(incoming_topic_name, bootstrap_servers=['172.17.13.27:9092'], auto_offset_reset='earliest',
                              enable_auto_commit=False, consumer_timeout_ms=1000)
     lst = []
     for message in consumer:
@@ -39,7 +39,7 @@ def sf_query(lst, creds):
 
 
 def kafka_prod(force_out, outgoing_topic_name):
-    producer = KafkaProducer(bootstrap_servers=['192.168.13.197:9092'])
+    producer = KafkaProducer(bootstrap_servers=['172.17.13.27:9092'])
     res = reduce(lambda x, y: x + y, force_out)
     for i in res:
         print(i)
