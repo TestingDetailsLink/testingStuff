@@ -2,7 +2,6 @@
 
 properties([
         buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')),
-        gitLabConnection('192.168.13.102:30009'),
         parameters([
                 string(name: 'BRANCH_TO_BUILD', defaultValue: 'master' )   
         ]),
